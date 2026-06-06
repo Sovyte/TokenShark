@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% set title = "API Reference" %}
+
+{% block content %}
+<div class="docs-page">
+    <aside class="docs-sidebar">
+        <nav class="docs-nav">
+            <div class="docs-nav-section">
+                <span class="docs-nav-label">Getting Started</span>
+                <a href="{{ url_for('docs.index') }}" class="docs-nav-link{ '% active' if request.path == '/docs/' else '' }">Overview</a>
+                <a href="{{ url_for('docs.quickstart') }}" class="docs-nav-link{ '% active' if request.path == '/docs/quickstart' else '' }">Quickstart</a>
+            </div>
+            <div class="docs-nav-section">
+                <span class="docs-nav-label">SDKs</span>
+                <a href="{{ url_for('docs.sdk_python') }}" class="docs-nav-link{ '% active' if request.path == '/docs/sdk/python' else '' }">Python</a>
+                <a href="{{ url_for('docs.sdk_nodejs') }}" class="docs-nav-link{ '% active' if request.path == '/docs/sdk/nodejs' else '' }">Node.js</a>
+            </div>
+            <div class="docs-nav-section">
+                <span class="docs-nav-label">Reference</span>
+                <a href="{{ url_for('docs.api_reference') }}" class="docs-nav-link{ '% active' if request.path == '/docs/api-reference' else '' }">API Reference</a>
+            </div>
+        </nav>
+    </aside>
+    <main class="docs-content">
+        <h1>API Reference</h1>
+        <div class="docs-body">
+            <p>Documentation for <strong>API Reference</strong> is being written. Check back soon for complete guides.</p>
+        </div>
+    </main>
+</div>
+{% endblock %}

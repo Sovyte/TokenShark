@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% set title = "Reset password" %}
+
+{% block content %}
+<div class="auth-page">
+    <div class="auth-container">
+        <div class="auth-brand">
+            <img src="/static/images/TokenShark.png" alt="" width="48" height="48">
+            <h1>Reset password</h1>
+            <p>Enter your email and we'll send you a reset link</p>
+        </div>
+
+        <form method="POST" action="{{ url_for('auth.forgot_password') }}" class="auth-form" novalidate>
+            <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="you@company.com" required autofocus autocomplete="email">
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full btn-lg">
+                Send reset link
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+        </form>
+
+        <p class="auth-footer">
+            Remember your password? <a href="{{ url_for('auth.login') }}">Sign in</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

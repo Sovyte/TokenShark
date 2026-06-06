@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% set title = "Billing" %}
+
+{% block breadcrumb %}
+<li><span aria-current="page">Billing</span></li>
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-page">
+    <div class="panel">
+        <div class="panel-header">
+            <h3 class="panel-title">Billing</h3>
+        </div>
+        <div class="panel-body">
+            <div class="empty-state">
+                <div class="empty-state-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                </div>
+                <h3>Billing integration coming soon</h3>
+                <p>Stripe billing will be connected here. For now, all accounts are on the free tier.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

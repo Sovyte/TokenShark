@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+*.so
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Database (local dev only — never commit SQLite to production)
+*.db
+*.sqlite
+*.sqlite3
+
+# Flask / Migrations
+instance/
+migrations/versions/*.py
+# Uncomment if you want to track migrations:
+# !migrations/versions/*.py
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Render / CI
+.render-buildpacks.json

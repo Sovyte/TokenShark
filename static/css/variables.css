@@ -1,0 +1,141 @@
+/* TokenShark Design System — CSS Custom Properties */
+
+:root {
+    /* ── Colors: Black ───────────────────────────────────── */
+    --color-black-900: #0a0a0a;
+    --color-black-800: #111111;
+    --color-black-700: #1a1a1a;
+    --color-black-600: #222222;
+    --color-black-500: #2a2a2a;
+    --color-black-400: #333333;
+    --color-black-300: #444444;
+    --color-black-200: #666666;
+    --color-black-100: #888888;
+
+    /* ── Colors: White ───────────────────────────────────── */
+    --color-white-100: #ffffff;
+    --color-white-200: #fafafa;
+    --color-white-300: #f5f5f5;
+    --color-white-400: #eeeeee;
+    --color-white-500: #e0e0e0;
+
+    /* ── Colors: Rosewater ───────────────────────────────── */
+    --color-rosewater-50:  #fdf8f7;
+    --color-rosewater-100: #f4e4e1;
+    --color-rosewater-200: #e8c4c0;
+    --color-rosewater-300: #d4a5a0;
+    --color-rosewater-400: #c08a85;
+    --color-rosewater-500: #a6706b;
+    --color-rosewater-600: #8a5a56;
+    --color-rosewater-700: #6e4542;
+    --color-rosewater-800: #52302e;
+    --color-rosewater-900: #361c1b;
+
+    /* ── Semantic Colors ─────────────────────────────────── */
+    --color-accent: var(--color-rosewater-500);
+    --color-accent-hover: var(--color-rosewater-400);
+    --color-accent-muted: var(--color-rosewater-700);
+    --color-success: #22c55e;
+    --color-warning: #f59e0b;
+    --color-error: #ef4444;
+    --color-info: #3b82f6;
+
+    /* ── Typography ──────────────────────────────────────── */
+    --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+    --font-sans: 'Inter', 'Geist', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-display: 'Space Grotesk', 'Inter', sans-serif;
+
+    /* ── Font Sizes ──────────────────────────────────────── */
+    --text-xs: 0.75rem;     /* 12px */
+    --text-sm: 0.875rem;    /* 14px */
+    --text-base: 1rem;      /* 16px */
+    --text-lg: 1.125rem;    /* 18px */
+    --text-xl: 1.25rem;     /* 20px */
+    --text-2xl: 1.5rem;     /* 24px */
+    --text-3xl: 1.875rem;   /* 30px */
+    --text-4xl: 2.25rem;    /* 36px */
+    --text-5xl: 3rem;       /* 48px */
+    --text-6xl: 3.75rem;    /* 60px */
+
+    /* ── Spacing ─────────────────────────────────────────── */
+    --space-1: 0.25rem;   /* 4px */
+    --space-2: 0.5rem;    /* 8px */
+    --space-3: 0.75rem;   /* 12px */
+    --space-4: 1rem;      /* 16px */
+    --space-5: 1.25rem;   /* 20px */
+    --space-6: 1.5rem;    /* 24px */
+    --space-8: 2rem;      /* 32px */
+    --space-10: 2.5rem;   /* 40px */
+    --space-12: 3rem;     /* 48px */
+    --space-16: 4rem;     /* 64px */
+    --space-20: 5rem;     /* 80px */
+    --space-24: 6rem;     /* 96px */
+
+    /* ── Radii ───────────────────────────────────────────── */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-2xl: 20px;
+    --radius-full: 9999px;
+
+    /* ── Shadows ─────────────────────────────────────────── */
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.5);
+    --shadow-glow: 0 0 40px rgba(166,112,107,0.15);
+    --shadow-glow-strong: 0 0 60px rgba(166,112,107,0.25);
+
+    /* ── Transitions ─────────────────────────────────────── */
+    --transition-fast: 150ms ease;
+    --transition-base: 250ms ease;
+    --transition-slow: 400ms ease;
+
+    /* ── Z-Index Scale ─────────────────────────────────── */
+    --z-base: 0;
+    --z-dropdown: 100;
+    --z-sticky: 200;
+    --z-modal: 300;
+    --z-popover: 400;
+    --z-toast: 500;
+    --z-tooltip: 600;
+
+    /* ── Layout ──────────────────────────────────────────── */
+    --sidebar-width: 260px;
+    --sidebar-collapsed: 64px;
+    --header-height: 64px;
+    --container-max: 1280px;
+    --container-padding: var(--space-6);
+}
+
+/* ── Dark Mode (Default) ─────────────────────────────────── */
+[data-theme="dark"] {
+    --color-bg: var(--color-black-900);
+    --color-bg-elevated: var(--color-black-800);
+    --color-bg-sunken: var(--color-black-900);
+    --color-surface: var(--color-black-700);
+    --color-surface-hover: var(--color-black-600);
+    --color-surface-active: var(--color-black-500);
+    --color-border: var(--color-black-500);
+    --color-border-subtle: var(--color-black-600);
+    --color-text: var(--color-white-100);
+    --color-text-secondary: var(--color-black-100);
+    --color-text-muted: var(--color-black-200);
+    --color-text-inverse: var(--color-black-900);
+}
+
+/* ── Light Mode ──────────────────────────────────────────── */
+[data-theme="light"] {
+    --color-bg: var(--color-white-200);
+    --color-bg-elevated: var(--color-white-100);
+    --color-bg-sunken: var(--color-white-300);
+    --color-surface: var(--color-white-100);
+    --color-surface-hover: var(--color-white-300);
+    --color-surface-active: var(--color-white-400);
+    --color-border: var(--color-white-500);
+    --color-border-subtle: var(--color-white-400);
+    --color-text: var(--color-black-900);
+    --color-text-secondary: var(--color-black-200);
+    --color-text-muted: var(--color-black-100);
+    --color-text-inverse: var(--color-white-100);
+}

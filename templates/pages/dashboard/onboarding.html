@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% set title = "Welcome" %}
+
+{% block content %}
+<div class="onboarding-page">
+    <div class="onboarding-container">
+        <div class="onboarding-step active" data-step="1">
+            <div class="onboarding-header">
+                <img src="/static/images/TokenShark.png" alt="" width="64" height="64">
+                <h1>Welcome to TokenShark</h1>
+                <p>Let's get you set up in under 3 minutes.</p>
+            </div>
+            <div class="onboarding-progress">
+                <div class="progress-step active"></div>
+                <div class="progress-step"></div>
+                <div class="progress-step"></div>
+            </div>
+            <div class="onboarding-body">
+                <h2>What you'll get</h2>
+                <div class="onboarding-perks">
+                    <div class="perk">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Real-time cost tracking</span>
+                    </div>
+                    <div class="perk">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Quality regression alerts</span>
+                    </div>
+                    <div class="perk">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Multi-provider support</span>
+                    </div>
+                </div>
+            </div>
+            <div class="onboarding-footer">
+                <button class="btn btn-primary btn-lg" data-next-step>Get started →</button>
+            </div>
+        </div>
+
+        <div class="onboarding-step" data-step="2">
+            <div class="onboarding-header">
+                <h1>Create your first API key</h1>
+                <p>This key authenticates your SDK integration.</p>
+            </div>
+            <div class="onboarding-progress">
+                <div class="progress-step completed"></div>
+                <div class="progress-step active"></div>
+                <div class="progress-step"></div>
+            </div>
+            <div class="onboarding-body">
+                <div class="api-key-display">
+                    <code class="api-key-value">ts_live_xxxxxxxxxxxxxxxx</code>
+                    <button class="btn btn-ghost btn-sm" data-copy-key>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        Copy
+                    </button>
+                </div>
+                <p class="text-muted">Keep this secret. Don't commit it to version control.</p>
+            </div>
+            <div class="onboarding-footer">
+                <button class="btn btn-ghost" data-prev-step>← Back</button>
+                <button class="btn btn-primary" data-next-step>Next step →</button>
+            </div>
+        </div>
+
+        <div class="onboarding-step" data-step="3">
+            <div class="onboarding-header">
+                <h1>Install the SDK</h1>
+                <p>Three lines of code. That's it.</p>
+            </div>
+            <div class="onboarding-progress">
+                <div class="progress-step completed"></div>
+                <div class="progress-step completed"></div>
+                <div class="progress-step active"></div>
+            </div>
+            <div class="onboarding-body">
+                <div class="code-tabs">
+                    <button class="code-tab active">Python</button>
+                    <button class="code-tab">Node.js</button>
+                </div>
+                <div class="code-block">
+                    <pre><code>pip install tokenshark
+
+import tokenshark
+tokenshark.init(api_key="ts_live_xxx")
+
+# Use OpenAI normally — we track everything
+import openai
+response = openai.chat.completions.create(...)</code></pre>
+                    <button class="code-copy" data-clipboard>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="onboarding-footer">
+                <a href="{{ url_for('dashboard.index') }}" class="btn btn-primary btn-lg">Go to dashboard →</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

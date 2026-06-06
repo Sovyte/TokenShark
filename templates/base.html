@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="{% if dark_mode %}dark{% else %}light{% endif %}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ tagline }} — Real-time LLM cost attribution, prompt regression detection, and hallucination tracking for production AI teams.">
+    <meta name="theme-color" content="{% if dark_mode %}#0a0a0a{% else %}#fafafa{% endif %}">
+    <meta name="color-scheme" content="{% if dark_mode %}dark{% else %}light{% endif %}">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{% if title %}{{ title }} | {% endif %}{{ brand }}">
+    <meta property="og:description" content="{{ tagline }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://{{ domain }}{{ request.path }}">
+    <meta property="og:image" content="https://{{ domain }}/static/images/og.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% if title %}{{ title }} | {% endif %}{{ brand }}">
+    <meta name="twitter:description" content="{{ tagline }}">
+    <meta name="twitter:image" content="https://{{ domain }}/static/images/og.png">
+
+    <title>{% if title %}{{ title }} | {% endif %}{{ brand }}</title>
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/static/images/TokenShark.png">
+    <link rel="apple-touch-icon" href="/static/images/TokenShark.png">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/reset.css">
+    <link rel="stylesheet" href="/static/css/variables.css">
+    <link rel="stylesheet" href="/static/css/utilities.css">
+    <link rel="stylesheet" href="/static/css/components.css">
+    <link rel="stylesheet" href="/static/css/layout.css">
+    <link rel="stylesheet" href="/static/css/animations.css">
+    <link rel="stylesheet" href="/static/css/pages.css">
+
+    {% block extra_css %}{% endblock %}
+
+    <!-- Hotjar Tracking -->
+    <script src="{{ hotjar_script }}" async></script>
+
+    <!-- Google Analytics (if configured) -->
+    {% if ga_id %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ ga_id }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{{ ga_id }}');
+    </script>
+    {% endif %}
+</head>
+<body class="{% if request.path.startswith('/dashboard') %}app-layout{% else %}marketing-layout{% endif %}">
+
+    {% if request.path.startswith('/dashboard') %}
+        {% include 'partials/app_nav.html' %}
+        {% include 'partials/sidebar.html' %}
+        <main class="app-main" id="main-content">
+            {% include 'partials/flash.html' %}
+            {% block content %}{% endblock %}
+        </main>
+    {% else %}
+        {% include 'partials/marketing_nav.html' %}
+        <main id="main-content">
+            {% include 'partials/flash.html' %}
+            {% block content %}{% endblock %}
+        </main>
+        {% include 'partials/footer.html' %}
+    {% endif %}
+
+    <!-- Global Components -->
+    {% include 'partials/command_palette.html' %}
+    {% include 'partials/toast_container.html' %}
+    {% include 'partials/keyboard_shortcuts.html' %}
+
+    <!-- Scripts -->
+    <script src="/static/js/core.js" defer></script>
+    <script src="/static/js/ui.js" defer></script>
+    <script src="/static/js/animations.js" defer></script>
+    <script src="/static/js/charts.js" defer></script>
+    <script src="/static/js/dashboard.js" defer></script>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

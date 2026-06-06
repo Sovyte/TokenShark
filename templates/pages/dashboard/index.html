@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+{% set title = "Dashboard" %}
+
+{% block breadcrumb %}
+<li><span aria-current="page">Overview</span></li>
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-page">
+    <!-- Stats Cards -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-card-header">
+                <span class="stat-label">Total Cost</span>
+                <span class="stat-period">This month</span>
+            </div>
+            <div class="stat-card-body">
+                <span class="stat-value">${{ "{:,.2f}".format(stats.total_cost) }}</span>
+                <span class="stat-trend {% if stats.cost_change > 0 %}trend-up{% else %}trend-down{% endif %}">
+                    {% if stats.cost_change > 0 %}↑{% else %}↓{% endif %} {{ "{:.1f}".format(stats.cost_change|abs) }}%
+                </span>
+            </div>
+            <div class="stat-card-footer">
+                <div class="mini-sparkline" data-values="[12,19,15,25,22,30,28,35,32,40,38,45,42,50,48,55,52,60,58,65,62,70,68,75,72,80,78,85,82,90]"></div>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-card-header">
+                <span class="stat-label">Requests</span>
+                <span class="stat-period">This month</span>
+            </div>
+            <div class="stat-card-body">
+                <span class="stat-value">{{ "{:,.0f}".format(stats.total_requests) }}</span>
+                <span class="stat-trend {% if stats.requests_change > 0 %}trend-up{% else %}trend-down{% endif %}">
+                    {% if stats.requests_change > 0 %}↑{% else %}↓{% endif %} {{ "{:.1f}".format(stats.requests_change|abs) }}%
+                </span>
+            </div>
+            <div class="stat-card-footer">
+                <div class="mini-sparkline" data-values="[100,120,110,140,130,160,150,180,170,200,190,220,210,240,230,260,250,280,270,300,290,320,310,340,330,360,350,380,370,400]"></div>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-card-header">
+                <span class="stat-label">Avg Latency</span>
+                <span class="stat-period">p95</span>
+            </div>
+            <div class="stat-card-body">
+                <span class="stat-value">{{ stats.avg_latency }}<span class="stat-unit">ms</span></span>
+                <span class="stat-trend {% if stats.latency_change > 0 %}trend-up{% else %}trend-down{% endif %}">
+                    {% if stats.latency_change > 0 %}↑{% else %}↓{% endif %} {{ "{:.1f}".format(stats.latency_change|abs) }}%
+                </span>
+            </div>
+            <div class="stat-card-footer">
+                <div class="mini-sparkline" data-values="[300,280,320,290,310,270,300,260,290,250,280,240,270,230,260,220,250,210,240,200,230,190,220,180,210,170,200,160,190,150]"></div>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-card-header">
+                <span class="stat-label">Error Rate</span>
+                <span class="stat-period">Last 24h</span>
+            </div>
+            <div class="stat-card-body">
+                <span class="stat-value">{{ stats.error_rate }}<span class="stat-unit">%</span></span>
+                <span class="stat-trend {% if stats.error_change > 0 %}trend-up{% else %}trend-down{% endif %}">
+                    {% if stats.error_change > 0 %}↑{% else %}↓{% endif %} {{ "{:.1f}".format(stats.error_change|abs) }}%
+                </span>
+            </div>
+            <div class="stat-card-footer">
+                <div class="mini-sparkline" data-values="[0.5,0.6,0.4,0.7,0.5,0.8,0.6,0.9,0.7,1.0,0.8,0.6,0.5,0.7,0.4,0.6,0.5,0.8,0.6,0.9,0.7,0.5,0.4,0.6,0.5,0.7,0.4,0.5,0.6,0.4]"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Chart + Side Panel -->
+    <div class="dashboard-row">
+        <div class="dashboard-col-8">
+            <div class="panel">
+                <div class="panel-header">
+                    <h3 class="panel-title">Cost & Requests Over Time</h3>
+                    <div class="panel-actions">
+                        <div class="segmented-control">
+                            <button class="segment active">24h</button>
+                            <button class="segment">7d</button>
+                            <button class="segment">30d</button>
+                            <button class="segment">90d</button>
+                        </div>
+                        <button class="panel-btn" title="Export data" data-export>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="chart-container" id="main-chart">
+                        <canvas id="costChart" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-col-4">
+            <div class="panel">
+                <div class="panel-header">
+                    <h3 class="panel-title">Cost by Model</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="donut-chart-container" id="model-chart">
+                        <canvas id="modelDonut" height="200"></canvas>
+                    </div>
+                    <div class="legend-list">
+                        <div class="legend-item">
+                            <span class="legend-dot" style="background:#a6706b"></span>
+                            <span class="legend-name">gpt-4o</span>
+                            <span class="legend-value">64.1%</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot" style="background:#d4a5a0"></span>
+                            <span class="legend-name">claude-3-sonnet</span>
+                            <span class="legend-value">24.1%</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot" style="background:#c08a85"></span>
+                            <span class="legend-name">mistral-large</span>
+                            <span class="legend-value">11.8%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Events Table -->
+    <div class="panel">
+        <div class="panel-header">
+            <h3 class="panel-title">Recent Events</h3>
+            <div class="panel-actions">
+                <div class="search-input-wrapper">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <input type="text" class="search-input" placeholder="Filter events..." id="event-search">
+                </div>
+                <a href="{{ url_for('dashboard.events') }}" class="panel-link">View all →</a>
+            </div>
+        </div>
+        <div class="panel-body panel-body-p0">
+            <div class="table-responsive">
+                <table class="data-table" id="events-table">
+                    <thead>
+                        <tr>
+                            <th>Request ID</th>
+                            <th>Provider</th>
+                            <th>Model</th>
+                            <th>Tokens</th>
+                            <th>Cost</th>
+                            <th>Latency</th>
+                            <th>Status</th>
+                            <th>Feature</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for event in events %}
+                        <tr class="table-row-interactive">
+                            <td><code class="code-sm">{{ event.id }}</code></td>
+                            <td>
+                                <span class="provider-tag provider-{{ event.provider }}">{{ event.provider }}</span>
+                            </td>
+                            <td>{{ event.model }}</td>
+                            <td>{{ "{:,}".format(event.tokens) }}</td>
+                            <td class="mono">${{ "{:.4f}".format(event.cost) }}</td>
+                            <td class="mono">{{ event.latency }}ms</td>
+                            <td>
+                                <span class="status-badge status-{{ event.status }}">{{ event.status }}</span>
+                            </td>
+                            <td><span class="feature-tag">{{ event.feature }}</span></td>
+                            <td class="text-muted">{{ event.time }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alerts Feed -->
+    <div class="panel">
+        <div class="panel-header">
+            <h3 class="panel-title">Recent Alerts</h3>
+            <div class="panel-actions">
+                <a href="{{ url_for('dashboard.alerts') }}" class="panel-link">Manage alerts →</a>
+            </div>
+        </div>
+        <div class="panel-body panel-body-p0">
+            <div class="alert-list">
+                {% for alert in alerts %}
+                <div class="alert-item{% if not alert.read %} alert-item-unread{% endif %}">
+                    <div class="alert-icon alert-icon-{{ alert.severity }}">
+                        {% if alert.severity == 'warning' %}
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        {% elif alert.severity == 'error' %}
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                        {% else %}
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                        {% endif %}
+                    </div>
+                    <div class="alert-content">
+                        <div class="alert-title">{{ alert.title }}</div>
+                        <div class="alert-message">{{ alert.message }}</div>
+                    </div>
+                    <div class="alert-meta">
+                        <span class="alert-time">{{ alert.time }}</span>
+                        {% if not alert.read %}
+                        <span class="alert-unread-dot"></span>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

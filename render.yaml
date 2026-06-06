@@ -1,0 +1,52 @@
+# render.yaml — Infrastructure-as-code for Render
+# https://render.com/docs/render-yaml-reference
+#
+# Deploy with: connect this repo in the Render dashboard,
+# or run `render deploy` with the Render CLI.
+
+services:
+  - type: web
+    name: tokenshark
+    runtime: python
+    region: oregon          # Change to: frankfurt, singapore, ohio, virginia
+    plan: free              # Upgrade to: starter, standard, pro
+
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn "app:create_app()" --bind "0.0.0.0:$PORT" --workers 2 --threads 2 --timeout 120 --log-level info
+
+    healthCheckPath: /health
+
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: SECRET_KEY
+        generateValue: true   # Render auto-generates a secure random value
+      - key: DATABASE_URL
+        fromDatabase:
+          name: tokenshark-db
+          property: connectionString
+      - key: LOG_LEVEL
+        value: INFO
+      # Optional — set these manually in the Render dashboard:
+      # - key: REDIS_URL
+      #   fromService:
+      #     name: tokenshark-redis
+      #     type: redis
+      #     property: connectionString
+      # - key: MAIL_SERVER
+      #   value: smtp.gmail.com
+      # - key: MAIL_USERNAME
+      #   sync: false
+      # - key: MAIL_PASSWORD
+      #   sync: false
+      # - key: STRIPE_SECRET_KEY
+      #   sync: false
+      # - key: GOOGLE_ANALYTICS_ID
+      #   sync: false
+
+databases:
+  - name: tokenshark-db
+    databaseName: tokenshark
+    user: tokenshark
+    region: oregon
+    plan: free              # Free PostgreSQL — expires after 90 days; upgrade for production

@@ -1,0 +1,69 @@
+<aside class="app-sidebar" id="app-sidebar" aria-label="App sidebar">
+    <nav class="sidebar-nav" aria-label="App navigation">
+        <div class="sidebar-section">
+            <span class="sidebar-label">Overview</span>
+            <a href="{{ url_for('dashboard.index') }}" class="sidebar-link{% if request.path == '/dashboard/' or request.path == '/dashboard' %} active{% endif %}" data-shortcut="g d">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                <span>Dashboard</span>
+                <kbd class="shortcut-hint">G D</kbd>
+            </a>
+            <a href="{{ url_for('dashboard.events') }}" class="sidebar-link{% if request.path == '/dashboard/events' %} active{% endif %}" data-shortcut="g e">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                <span>Events</span>
+                <span class="sidebar-badge">2.8M</span>
+                <kbd class="shortcut-hint">G E</kbd>
+            </a>
+            <a href="{{ url_for('dashboard.analytics') }}" class="sidebar-link{% if request.path == '/dashboard/analytics' %} active{% endif %}" data-shortcut="g a">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                <span>Analytics</span>
+                <kbd class="shortcut-hint">G A</kbd>
+            </a>
+            <a href="{{ url_for('dashboard.alerts') }}" class="sidebar-link{% if request.path == '/dashboard/alerts' %} active{% endif %}" data-shortcut="g l">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                <span>Alerts</span>
+                <span class="sidebar-badge badge-accent">3</span>
+                <kbd class="shortcut-hint">G L</kbd>
+            </a>
+        </div>
+
+        <div class="sidebar-section">
+            <span class="sidebar-label">Configuration</span>
+            <a href="{{ url_for('dashboard.api_keys') }}" class="sidebar-link{% if request.path == '/dashboard/api-keys' %} active{% endif %}" data-shortcut="g k">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>
+                <span>API Keys</span>
+                <kbd class="shortcut-hint">G K</kbd>
+            </a>
+            <a href="{{ url_for('dashboard.team') }}" class="sidebar-link{% if request.path == '/dashboard/team' %} active{% endif %}" data-shortcut="g t">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                <span>Team</span>
+                <kbd class="shortcut-hint">G T</kbd>
+            </a>
+            <a href="{{ url_for('dashboard.settings') }}" class="sidebar-link{% if request.path == '/dashboard/settings' %} active{% endif %}" data-shortcut="g s">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 5 15.4a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                <span>Settings</span>
+                <kbd class="shortcut-hint">G S</kbd>
+            </a>
+        </div>
+
+        <div class="sidebar-section sidebar-section-bottom">
+            <div class="usage-widget" id="usage-widget">
+                <div class="usage-header">
+                    <span class="usage-label">Usage</span>
+                    <span class="usage-value">2.8M / 10M</span>
+                </div>
+                <div class="usage-bar">
+                    <div class="usage-fill" style="width: 28%"></div>
+                </div>
+                <div class="usage-footer">
+                    <span>28% of Team plan</span>
+                    <a href="{{ url_for('billing.upgrade') }}">Upgrade</a>
+                </div>
+            </div>
+
+            <a href="{{ url_for('docs.quickstart') }}" class="sidebar-link sidebar-link-help" target="_blank">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                <span>Help & Docs</span>
+            </a>
+        </div>
+    </nav>
+</aside>

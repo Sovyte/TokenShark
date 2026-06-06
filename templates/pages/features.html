@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% set title = "Features" %}
+
+{% block content %}
+<section class="page-hero page-hero-sm">
+    <div class="container">
+        <span class="section-eyebrow">Features</span>
+        <h1 class="page-title">Everything you need to<br>ship AI with confidence</h1>
+        <p class="page-subtitle">One SDK. Three lines of code. Complete production visibility.</p>
+    </div>
+</section>
+
+<section class="features-detail">
+    <div class="container">
+        <div class="feature-block">
+            <div class="feature-block-content">
+                <span class="feature-number">01</span>
+                <h2>Real-Time Cost Attribution</h2>
+                <p>Know exactly which users, features, and prompts are driving your OpenAI bill. Per-user, per-feature, per-model cost breakdown with sub-second latency.</p>
+                <ul class="feature-list">
+                    <li>Per-user cost tracking</li>
+                    <li>Per-feature attribution</li>
+                    <li>Per-model breakdown</li>
+                    <li>Sub-second latency</li>
+                </ul>
+            </div>
+            <div class="feature-block-visual">
+                <div class="feature-mock">
+                    <div class="mock-header">
+                        <div class="mock-dots"><span></span><span></span><span></span></div>
+                        <span>Cost Breakdown</span>
+                    </div>
+                    <div class="mock-body">
+                        <div class="mock-bar-row"><span>User: marcus@nexus</span><div class="mock-bar" style="width:65%"></div><span>$8,234</span></div>
+                        <div class="mock-bar-row"><span>Feature: chat</span><div class="mock-bar" style="width:40%"></div><span>$5,102</span></div>
+                        <div class="mock-bar-row"><span>Model: gpt-4o</span><div class="mock-bar" style="width:80%"></div><span>$10,291</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="feature-block feature-block-reverse">
+            <div class="feature-block-content">
+                <span class="feature-number">02</span>
+                <h2>Hallucination Detection</h2>
+                <p>Automatically flag outputs that deviate from expected patterns. Catch quality regressions before customers do.</p>
+                <ul class="feature-list">
+                    <li>Statistical anomaly detection</li>
+                    <li>Output pattern analysis</li>
+                    <li>Confidence scoring</li>
+                    <li>Auto-escalation rules</li>
+                </ul>
+            </div>
+            <div class="feature-block-visual">
+                <div class="feature-mock">
+                    <div class="mock-header">
+                        <div class="mock-dots"><span></span><span></span><span></span></div>
+                        <span>Quality Alert</span>
+                    </div>
+                    <div class="mock-body">
+                        <div class="mock-alert mock-alert-error">
+                            <span class="mock-alert-dot"></span>
+                            <div>
+                                <strong>Hallucination detected</strong>
+                                <p>Confidence dropped to 34% on prompt v3.2</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="feature-block">
+            <div class="feature-block-content">
+                <span class="feature-number">03</span>
+                <h2>Prompt Regression Alerts</h2>
+                <p>Detect when a prompt update silently degrades quality. Compare versions side-by-side with statistical significance.</p>
+                <ul class="feature-list">
+                    <li>Version comparison</li>
+                    <li>A/B testing</li>
+                    <li>Statistical significance</li>
+                    <li>Auto-rollbacks</li>
+                </ul>
+            </div>
+            <div class="feature-block-visual">
+                <div class="feature-mock">
+                    <div class="mock-header">
+                        <div class="mock-dots"><span></span><span></span><span></span></div>
+                        <span>Prompt Diff</span>
+                    </div>
+                    <div class="mock-body">
+                        <div class="mock-diff">
+                            <div class="mock-diff-old">- "You are a helpful assistant"</div>
+                            <div class="mock-diff-new">+ "You are an AI assistant"</div>
+                        </div>
+                        <div class="mock-diff-stat">Quality: 94% → 71% ↓</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="feature-block feature-block-reverse">
+            <div class="feature-block-content">
+                <span class="feature-number">04</span>
+                <h2>Multi-Provider Unification</h2>
+                <p>One dashboard for OpenAI, Anthropic, Mistral, Cohere, and local models. Unified cost view, unified quality metrics, unified alerts.</p>
+                <ul class="feature-list">
+                    <li>OpenAI, Anthropic, Mistral</li>
+                    <li>Cohere, Google, Azure</li>
+                    <li>Local / self-hosted models</li>
+                    <li>Unified API surface</li>
+                </ul>
+            </div>
+            <div class="feature-block-visual">
+                <div class="feature-mock">
+                    <div class="mock-header">
+                        <div class="mock-dots"><span></span><span></span><span></span></div>
+                        <span>Providers</span>
+                    </div>
+                    <div class="mock-body">
+                        <div class="mock-provider-list">
+                            <span class="mock-provider active">OpenAI</span>
+                            <span class="mock-provider active">Anthropic</span>
+                            <span class="mock-provider">Mistral</span>
+                            <span class="mock-provider">Cohere</span>
+                            <span class="mock-provider">Local</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

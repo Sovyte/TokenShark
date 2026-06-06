@@ -1,0 +1,400 @@
+{% extends "base.html" %}
+{% set title = "LLM Observability & Cost Intelligence" %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<section class="hero" id="hero">
+    <div class="hero-bg" aria-hidden="true">
+        <div class="hero-grid"></div>
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+    </div>
+
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-pulse"></span>
+                <span>Now with multi-provider support</span>
+                <a href="{{ url_for('docs.quickstart') }}">See what's new →</a>
+            </div>
+
+            <h1 class="hero-title">
+                <span class="hero-title-line">Datadog for</span>
+                <span class="hero-title-line hero-title-accent">LLM Applications</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                Real-time cost attribution, prompt regression detection, hallucination tracking, and token waste analysis. One SDK line. Instant visibility.
+            </p>
+
+            <div class="hero-cta">
+                <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg">
+                    Start monitoring free
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+                <a href="{{ url_for('docs.quickstart') }}" class="btn btn-ghost btn-lg">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                    View demo
+                </a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-value">2.8B+</span>
+                    <span class="hero-stat-label">Requests tracked</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="hero-stat-value">$4.2M</span>
+                    <span class="hero-stat-label">Customer savings</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="hero-stat-value">99.9%</span>
+                    <span class="hero-stat-label">Uptime SLA</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Dashboard Preview -->
+        <div class="hero-preview" id="hero-preview">
+            <div class="preview-window">
+                <div class="preview-header">
+                    <div class="preview-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div class="preview-title">tokenshark.io/dashboard</div>
+                </div>
+                <div class="preview-body">
+                    <div class="preview-sidebar-mock">
+                        <div class="preview-sidebar-item active"></div>
+                        <div class="preview-sidebar-item"></div>
+                        <div class="preview-sidebar-item"></div>
+                        <div class="preview-sidebar-item"></div>
+                    </div>
+                    <div class="preview-content">
+                        <div class="preview-cards">
+                            <div class="preview-card">
+                                <div class="preview-card-header">Total Cost</div>
+                                <div class="preview-card-value">$12,847</div>
+                                <div class="preview-card-trend up">+8.3%</div>
+                            </div>
+                            <div class="preview-card">
+                                <div class="preview-card-header">Requests</div>
+                                <div class="preview-card-value">2.8M</div>
+                                <div class="preview-card-trend up">+12.5%</div>
+                            </div>
+                            <div class="preview-card">
+                                <div class="preview-card-header">Avg Latency</div>
+                                <div class="preview-card-value">245ms</div>
+                                <div class="preview-card-trend down">-5.2%</div>
+                            </div>
+                            <div class="preview-card">
+                                <div class="preview-card-header">Error Rate</div>
+                                <div class="preview-card-value">0.42%</div>
+                                <div class="preview-card-trend down">-0.1%</div>
+                            </div>
+                        </div>
+                        <div class="preview-chart">
+                            <div class="preview-chart-line"></div>
+                            <div class="preview-chart-area"></div>
+                        </div>
+                        <div class="preview-table">
+                            <div class="preview-table-row">
+                                <span>gpt-4o</span><span>$8,234</span><span>64.1%</span>
+                            </div>
+                            <div class="preview-table-row">
+                                <span>claude-3-sonnet</span><span>$3,102</span><span>24.1%</span>
+                            </div>
+                            <div class="preview-table-row">
+                                <span>mistral-large</span><span>$1,511</span><span>11.8%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TRUST BADGES -->
+<section class="trust" aria-label="Trusted by">
+    <div class="container">
+        <p class="trust-label">Trusted by engineering teams at</p>
+        <div class="trust-logos">
+            <div class="trust-logo">Vercel</div>
+            <div class="trust-logo">Stripe</div>
+            <div class="trust-logo">Notion</div>
+            <div class="trust-logo">Linear</div>
+            <div class="trust-logo">Figma</div>
+            <div class="trust-logo">Anthropic</div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES GRID -->
+<section class="features-section" id="features">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-eyebrow">Features</span>
+            <h2 class="section-title">Everything you need to ship<br>AI with confidence</h2>
+            <p class="section-subtitle">One SDK. Three lines of code. Complete production visibility.</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card feature-card-large">
+                <div class="feature-card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                </div>
+                <h3>Real-Time Cost Attribution</h3>
+                <p>Know exactly which users, features, and prompts are driving your OpenAI bill. Per-user, per-feature, per-model cost breakdown with sub-second latency.</p>
+                <div class="feature-card-visual">
+                    <div class="cost-bar">
+                        <div class="cost-segment" style="width:64%"></div>
+                        <div class="cost-segment" style="width:24%"></div>
+                        <div class="cost-segment" style="width:12%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                </div>
+                <h3>Hallucination Detection</h3>
+                <p>Automatically flag outputs that deviate from expected patterns. Catch quality regressions before customers do.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                </div>
+                <h3>Prompt Regression Alerts</h3>
+                <p>Detect when a prompt update silently degrades quality. Compare versions side-by-side with statistical significance.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
+                <h3>Latency Percentiles</h3>
+                <p>Track p50, p95, p99 latency per model and provider. Identify bottlenecks before they impact UX.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                </div>
+                <h3>Budget Controls</h3>
+                <p>Hard limits and soft alerts per team, per feature, per model. Never get surprised by an AI bill again.</p>
+            </div>
+
+            <div class="feature-card feature-card-large">
+                <div class="feature-card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
+                <h3>Multi-Provider Unification</h3>
+                <p>One dashboard for OpenAI, Anthropic, Mistral, Cohere, and local models. Unified cost view, unified quality metrics, unified alerts.</p>
+                <div class="feature-providers">
+                    <span class="provider-badge">OpenAI</span>
+                    <span class="provider-badge">Anthropic</span>
+                    <span class="provider-badge">Mistral</span>
+                    <span class="provider-badge">Cohere</span>
+                    <span class="provider-badge">Local</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-eyebrow">Integration</span>
+            <h2 class="section-title">Three lines of code.<br>Zero configuration.</h2>
+        </div>
+
+        <div class="code-showcase">
+            <div class="code-tabs">
+                <button class="code-tab active" data-tab="python">Python</button>
+                <button class="code-tab" data-tab="nodejs">Node.js</button>
+                <button class="code-tab" data-tab="curl">cURL</button>
+            </div>
+            <div class="code-panels">
+                <div class="code-panel active" data-panel="python">
+                    <pre><code class="language-python"><span class="code-comment"># 1. Install</span>
+<span class="code-keyword">pip</span> install tokenshark
+
+<span class="code-comment"># 2. Import & wrap</span>
+<span class="code-keyword">from</span> tokenshark <span class="code-keyword">import</span> monitor
+monitor.init(api_key=<span class="code-string">"ts_your_key_here"</span>)
+
+<span class="code-comment"># 3. Use normally — we handle the rest</span>
+<span class="code-keyword">import</span> openai
+response = openai.chat.completions.create(
+    model=<span class="code-string">"gpt-4o"</span>,
+    messages=[{<span class="code-string">"role"</span>: <span class="code-string">"user"</span>, <span class="code-string">"content"</span>: <span class="code-string">"Hello"</span>}]
+)
+<span class="code-comment"># → Automatically tracked: cost, latency, tokens, quality</span></code></pre>
+                    <button class="code-copy" data-clipboard="python-code" aria-label="Copy code">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        <span>Copy</span>
+                    </button>
+                </div>
+                <div class="code-panel" data-panel="nodejs">
+                    <pre><code class="language-javascript"><span class="code-comment">// 1. Install</span>
+<span class="code-keyword">npm</span> install tokenshark
+
+<span class="code-comment">// 2. Import & wrap</span>
+<span class="code-keyword">const</span> { monitor } = <span class="code-keyword">require</span>(<span class="code-string">'tokenshark'</span>);
+monitor.init({ apiKey: <span class="code-string">'ts_your_key_here'</span> });
+
+<span class="code-comment">// 3. Use normally — we handle the rest</span>
+<span class="code-keyword">const</span> openai = <span class="code-keyword">require</span>(<span class="code-string">'openai'</span>);
+<span class="code-keyword">const</span> response = <span class="code-keyword">await</span> openai.chat.completions.create({
+    model: <span class="code-string">'gpt-4o'</span>,
+    messages: [{ role: <span class="code-string">'user'</span>, content: <span class="code-string">'Hello'</span> }]
+});
+<span class="code-comment">// → Automatically tracked: cost, latency, tokens, quality</span></code></pre>
+                    <button class="code-copy" data-clipboard="nodejs-code" aria-label="Copy code">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        <span>Copy</span>
+                    </button>
+                </div>
+                <div class="code-panel" data-panel="curl">
+                    <pre><code class="language-bash"><span class="code-comment"># Send event directly via API</span>
+curl -X POST https://api.tokenshark.io/v1/ingest \
+  -H <span class="code-string">"X-API-Key: ts_your_key_here"</span> \
+  -H <span class="code-string">"Content-Type: application/json"</span> \
+  -d <span class="code-string">'{
+    "provider": "openai",
+    "model": "gpt-4o",
+    "prompt_tokens": 150,
+    "completion_tokens": 420,
+    "cost_usd": 0.0124,
+    "latency_ms": 234,
+    "feature_tag": "chat"
+  }'</span></code></pre>
+                    <button class="code-copy" data-clipboard="curl-code" aria-label="Copy code">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        <span>Copy</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" aria-label="Customer testimonials">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-eyebrow">Testimonials</span>
+            <h2 class="section-title">Loved by AI engineering teams</h2>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-quote">"TokenShark caught a $3,200/day cost spike within 2 hours of going live. We had no idea one user was generating 40% of our token usage."</p>
+                <div class="testimonial-author">
+                    <div class="avatar">MK</div>
+                    <div>
+                        <span class="testimonial-name">Marcus Kim</span>
+                        <span class="testimonial-role">CTO, NexusAI</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-quote">"The prompt regression detection saved us from a production incident. A minor wording change dropped our accuracy from 94% to 71%. TokenShark flagged it in 10 minutes."</p>
+                <div class="testimonial-author">
+                    <div class="avatar">SL</div>
+                    <div>
+                        <span class="testimonial-name">Sarah Lin</span>
+                        <span class="testimonial-role">Staff Engineer, Vercel</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-quote">"We evaluated 6 tools. TokenShark was the only one that gave us per-user cost attribution out of the box. Setup took 4 minutes."</p>
+                <div class="testimonial-author">
+                    <div class="avatar">JR</div>
+                    <div>
+                        <span class="testimonial-name">James Rodriguez</span>
+                        <span class="testimonial-role">VP Engineering, FinFlow</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRICING PREVIEW -->
+<section class="pricing-preview" id="pricing">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-eyebrow">Pricing</span>
+            <h2 class="section-title">Start free. Scale as you grow.</h2>
+            <p class="section-subtitle">No credit card required. Upgrade when you need more.</p>
+        </div>
+
+        <div class="pricing-grid">
+            {% for tier_key, tier in pricing.items() %}
+            <div class="pricing-card{% if tier_key == 'team' %} pricing-card-highlight{% endif %}">
+                {% if tier_key == 'team' %}
+                <div class="pricing-badge">Most Popular</div>
+                {% endif %}
+                <div class="pricing-header">
+                    <h3>{{ tier.name }}</h3>
+                    <div class="pricing-price">
+                        {% if tier.price == 0 %}
+                        <span class="price-value">Free</span>
+                        {% else %}
+                        <span class="price-currency">$</span>
+                        <span class="price-value">{{ tier.price }}</span>
+                        <span class="price-period">/mo</span>
+                        {% endif %}
+                    </div>
+                </div>
+                <ul class="pricing-features">
+                    {% for feature in tier.features %}
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        {{ feature }}
+                    </li>
+                    {% endfor %}
+                </ul>
+                <a href="{{ url_for('auth.register') }}" class="btn{% if tier_key == 'team' %} btn-primary{% else %} btn-ghost{% endif %} btn-full">
+                    {% if tier_key == 'free' %}Get started free{% elif tier_key == 'enterprise' %}Contact sales{% else %}Start trial{% endif %}
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-card">
+            <div class="cta-glow" aria-hidden="true"></div>
+            <h2 class="cta-title">Ready to stop flying blind?</h2>
+            <p class="cta-subtitle">Join 2,400+ teams monitoring their LLM production stack with TokenShark.</p>
+            <div class="cta-actions">
+                <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg">
+                    Start monitoring free
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+                <a href="{{ url_for('main.contact') }}" class="btn btn-ghost btn-lg">Talk to sales</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

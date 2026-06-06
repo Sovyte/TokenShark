@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% set title = "About" %}
+
+{% block content %}
+<section class="page-hero page-hero-sm">
+    <div class="container">
+        <span class="section-eyebrow">About</span>
+        <h1 class="page-title">Built by engineers,<br>for engineers</h1>
+        <p class="page-subtitle">We're on a mission to make LLM production observability as standard as application monitoring.</p>
+    </div>
+</section>
+
+<section class="about-content">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-card">
+                <span class="about-number">2.8B+</span>
+                <span class="about-label">Requests tracked</span>
+            </div>
+            <div class="about-card">
+                <span class="about-number">$4.2M</span>
+                <span class="about-label">Customer savings</span>
+            </div>
+            <div class="about-card">
+                <span class="about-number">2,400+</span>
+                <span class="about-label">Active teams</span>
+            </div>
+            <div class="about-card">
+                <span class="about-number">99.9%</span>
+                <span class="about-label">Uptime SLA</span>
+            </div>
+        </div>
+
+        <div class="about-story">
+            <h2>Our story</h2>
+            <p>TokenShark was born from a simple observation: every team shipping LLM-powered features was flying blind. Cost bills arrived with no granularity. Quality issues were discovered by customers, not dashboards. Prompt updates silently broke things.</p>
+            <p>We built the tool we wished we had. One SDK. Three lines of code. Complete visibility into cost, quality, and performance.</p>
+            <p>Today, 2,400+ teams trust TokenShark to monitor their production AI stack. From YC startups to Fortune 500 companies.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

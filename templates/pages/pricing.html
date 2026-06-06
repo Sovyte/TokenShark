@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% set title = "Pricing" %}
+
+{% block content %}
+<section class="page-hero page-hero-sm">
+    <div class="container">
+        <span class="section-eyebrow">Pricing</span>
+        <h1 class="page-title">Simple, transparent pricing</h1>
+        <p class="page-subtitle">Start free. Upgrade when you need more. No hidden fees.</p>
+    </div>
+</section>
+
+<section class="pricing-detail">
+    <div class="container">
+        <div class="pricing-grid pricing-grid-detail">
+            {% for tier_key, tier in pricing.items() %}
+            <div class="pricing-card{% if tier_key == 'team' %} pricing-card-highlight{% endif %}">
+                {% if tier_key == 'team' %}
+                <div class="pricing-badge">Most Popular</div>
+                {% endif %}
+                <div class="pricing-header">
+                    <h3>{{ tier.name }}</h3>
+                    <div class="pricing-price">
+                        {% if tier.price == 0 %}
+                        <span class="price-value">Free</span>
+                        {% else %}
+                        <span class="price-currency">$</span>
+                        <span class="price-value">{{ tier.price }}</span>
+                        <span class="price-period">/mo</span>
+                        {% endif %}
+                    </div>
+                    <p class="pricing-desc">
+                        {% if tier_key == 'free' %}For solo developers and side projects
+                        {% elif tier_key == 'team' %}For growing teams shipping AI features
+                        {% elif tier_key == 'business' %}For companies with serious AI workloads
+                        {% else %}For enterprises with compliance requirements{% endif %}
+                    </p>
+                </div>
+                <ul class="pricing-features">
+                    {% for feature in tier.features %}
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        {{ feature }}
+                    </li>
+                    {% endfor %}
+                </ul>
+                <a href="{{ url_for('auth.register') }}" class="btn{% if tier_key == 'team' %} btn-primary{% else %} btn-ghost{% endif %} btn-full">
+                    {% if tier_key == 'free' %}Get started free{% elif tier_key == 'enterprise' %}Contact sales{% else %}Start 14-day trial{% endif %}
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="pricing-faq">
+            <h2>Frequently asked questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>What happens when I exceed my request limit?</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We never drop your data. Events continue to be ingested and you'll receive an alert. You can upgrade instantly or contact us for a custom plan.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Can I self-host TokenShark?</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! Enterprise plans include on-premise deployment with full source code access. Contact sales for details.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Do you offer refunds?</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. If TokenShark doesn't save you at least 10x its cost in the first month, we'll refund your subscription. No questions asked.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
